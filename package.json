@@ -10,7 +10,7 @@
     "dev:app": "ts-node --esm app.ts",
     "dev:nodemon": "nodemon --watch './**/*.ts' --exec",
     "dev": "next dev",
-    "build": "next build",
+    "build": "tsc && next build",
     "start": "nodemon server",
     "lint": "next lint"
   },
