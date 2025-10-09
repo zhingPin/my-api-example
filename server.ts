@@ -2,36 +2,46 @@ import app from "./app";
 import "dotenv/config";
 import { connectToDatabase } from "./utils/mongoDB";
 
-process.on("uncaughtException", (err: Error) => {
-    console.error("UNCAUGHT EXCEPTION! 💥 Shutting down...", err.name, err.message);
-    process.exit(1);
+// Gracefully handle uncaught exceptions
+process.on("uncaughtException", (error: Error) => {
+    console.error("UNCAUGHT EXCEPTION! 💥 Shutting down...");
+    console.error(`Error Name: ${error.name}`);
+    console.error(`Error Message: ${error.message}`);
+    process.exit(1); // Exit the process to avoid undefined behavior
 });
 
-// Validate environment variables
-const validateEnvVars = () => {
-    const requiredVars = ["DATABASE", "PORT"];
-    requiredVars.forEach((key) => {
-        if (!process.env[key]) {
-            console.error(`${key} environment variable is missing`);
-            process.exit(1);
+// Function to validate required environment variables
+const validateEnvironmentVariables = (): void => {
+    const requiredVariables = ["DATABASE", "PORT"];
+    requiredVariables.forEach((variable) => {
+        if (!process.env[variable]) {
+            console.error(`Missing required environment variable: ${variable}`);
+            process.exit(1); // Exit if any required variable is missing
         }
     });
 };
 
-console.log("environment:", app.get("env"));
+// Log the current environment
+console.log(`Environment: ${app.get("env")}`);
 
-validateEnvVars();
+// Validate environment variables
+validateEnvironmentVariables();
+
+// Connect to the database
 connectToDatabase();
+
+// Start the server
 const port = process.env.PORT || 8081;
 const server = app.listen(port, () => {
-    console.log(`Server running on Port: ${port}`);
+    console.log(`Server is running on port: ${port}`);
 });
 
-process.on("unhandledRejection", (err: Error) => {
-    console.error("UNHANDLED REJECTION! 💥 Shutting down...", err.name, err.message);
+// Gracefully handle unhandled promise rejections
+process.on("unhandledRejection", (error: Error) => {
+    console.error("UNHANDLED REJECTION! 💥 Shutting down...");
+    console.error(`Error Name: ${error.name}`);
+    console.error(`Error Message: ${error.message}`);
     server.close(() => {
-        process.exit(1);
+        process.exit(1); // Exit the process after closing the server
     });
 });
-
-
