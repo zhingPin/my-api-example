@@ -9,8 +9,8 @@
     "dev:server": "ts-node server",
     "dev:app": "ts-node --esm app.ts",
     "dev:nodemon": "nodemon --watch './**/*.ts' --exec",
-    "dev": "next dev",
-    "build": "tsc && next build",
+    "dev": "ts-node server.ts",
+    "build": "next build",
     "start": "NODE_ENV=production ts-node server.ts",
     "lint": "next lint"
   },
