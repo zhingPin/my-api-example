@@ -11,7 +11,7 @@
     "dev:nodemon": "nodemon --watch './**/*.ts' --exec",
     "dev": "next dev",
     "build": "next build",
-    "start": "ts-node server",
+    "start": "nodemon server",
     "lint": "next lint"
   },
   "dependencies": {
