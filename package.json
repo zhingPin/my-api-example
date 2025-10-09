@@ -1,9 +1,11 @@
 {
   "name": "my-api",
   "version": "0.1.0",
+  "description": "A robust and secure API built with Node.js, Express, and TypeScript, featuring JWT authentication, rate limiting, data sanitization, and integration with MongoDB and Redis for efficient data management.",
+  "main": "server",
   "private": false,
   "scripts": {
-    "start:prod": "NODE_ENV=production tsc && node server.js",
+    "start:prod": "NODE_ENV=production tsc && node server",
     "dev:server": "ts-node server",
     "dev:app": "ts-node --esm app.ts",
     "dev:nodemon": "nodemon --watch './**/*.ts' --exec",
