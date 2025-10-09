@@ -14,7 +14,6 @@ import { fileURLToPath } from "url";
 import AppError from "./utils/appError";
 import globalErrorHandler from "./utils/globalErrorHandler";
 import xss from "xss-clean";
-import './styles/global.css';
 
 
 // Get the current file's directory path
