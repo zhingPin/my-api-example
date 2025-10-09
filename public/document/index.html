@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Documentation</title>
+  </head>
+  <body>
+    <h1>Documentation: Chat Assistant</h1>
+
+    <section>
+      <h2>Overview</h2>
+      <p>
+        The chat assistant provides a conversational interface where users can
+        send messages and receive responses from an AI assistant. The assistant
+        interacts in real-time, allowing seamless communication. The chat system
+        supports markdown rendering for rich content and code syntax
+        highlighting for code-related queries.
+      </p>
+    </section>
+
+    <section>
+      <h2>Key Features</h2>
+      <ul>
+        <li>
+          <strong>Real-time Messaging:</strong> Users can send messages to the
+          assistant, which responds instantly based on the query.
+        </li>
+        <li>
+          <strong>Markdown Rendering:</strong> The assistant's responses are
+          rendered with support for GitHub-flavored markdown (GFM), including
+          headers, links, and lists.
+        </li>
+        <li>
+          <strong>Code Syntax Highlighting:</strong> Code blocks are highlighted
+          using the <code>Prism.js</code> syntax highlighter, making it easy to
+          read and understand code snippets.
+        </li>
+        <li>
+          <strong>Message History:</strong> Previous messages are fetched and
+          displayed from a backend API, providing users with the full context of
+          their conversation.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How It Works</h2>
+      <p>The assistant's functionality is divided into several steps:</p>
+      <ol>
+        <li>
+          <strong>Message Fetching:</strong> When the page loads, the
+          <code>useEffect</code> hook fetches the existing conversation history
+          from the backend using the <code>fetchMessages</code> function.
+        </li>
+        <li>
+          <strong>Sending Messages:</strong> Users can type messages in the
+          textarea. When the send button is clicked, the
+          <code>sendMessage</code> function is triggered, sending the user's
+          message to the backend API and receiving a response.
+        </li>
+        <li>
+          <strong>Real-time Updates:</strong> After the assistant responds, the
+          message list is updated with the new response, and the chat scrolls to
+          the latest message.
+        </li>
+        <li>
+          <strong>Markdown and Code Rendering:</strong> Messages containing
+          markdown (such as code blocks) are rendered using
+          <code>ReactMarkdown</code> with support for GitHub-flavored markdown
+          and syntax highlighting for code snippets.
+        </li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Technical Details</h2>
+      <p>
+        The system is implemented using React functional components with hooks
+        for managing state and side effects. Key libraries used include:
+      </p>
+      <ul>
+        <li>
+          <strong>React:</strong> For managing the user interface and state
+          management.
+        </li>
+        <li>
+          <strong>ReactMarkdown:</strong> For rendering markdown in chat
+          messages, including GitHub-flavored markdown (GFM).
+        </li>
+        <li>
+          <strong>Prism.js:</strong> For syntax highlighting of code snippets
+          within chat messages.
+        </li>
+        <li>
+          <strong>Custom API Functions:</strong> The
+          <code>fetchMessages</code> and <code>sendMessageToAPI</code> functions
+          handle interaction with the backend for fetching and sending chat
+          messages.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Usage</h2>
+      <p>To start using the chat assistant:</p>
+      <ul>
+        <li>
+          Type your message in the text area at the bottom of the chat window.
+        </li>
+        <li>Click the "Send" button to send your message.</li>
+        <li>
+          The assistant will respond to your query, and you will see the
+          conversation history updated in the chat window.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code Snippets</h2>
+      <p>Example of a code snippet rendered with syntax highlighting:</p>
+      <pre>
+            <code class="language-javascript">
+                const sendMessage = async () => {
+                    const inputMessage = inputRef.current.value.trim();
+                    if (!inputMessage) return;
+                    const response = await sendMessageToAPI(inputMessage);
+                    console.log(response);
+                };
+            </code>
+        </pre>
+    </section>
+  </body>
+</html>
