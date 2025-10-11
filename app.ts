@@ -10,7 +10,6 @@ import mongoSanitize from "express-mongo-sanitize";
 import mediaRouter from "./media/mediaRouter";
 import userRouter from "./users/router/userRouter";
 import path from "path";
-import { fileURLToPath } from "url";
 import AppError from "./utils/appError";
 import globalErrorHandler from "./utils/globalErrorHandler";
 import xss from "xss-clean";
