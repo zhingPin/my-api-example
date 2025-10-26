@@ -7,7 +7,7 @@ const router = Router();
 // Media Routes
 
 router.route("/")
-    .get(authController.protect, mediaControllers.getAllMedia)
+    .get(mediaControllers.getAllMedia)
     .post(authController.protect, mediaControllers.uploadMedia);
 
 router.route("/:id")
